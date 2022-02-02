@@ -11,4 +11,4 @@ if Hours>40:
 else:
     Pay=Hours*Rate
 
-print('Pay: ' ,Pay)
+print('Pay:',Pay)
