@@ -1,13 +1,11 @@
-x = "Cost = "
+age = input('Enter your age: ')
 try:
-    people = int(input('Number of guests: '))
-    if people <= 50:
-        print(x, '$4,000')
-    elif people <= 100:
-        print(x, '$10,000')
-    elif people <= 200:
-        print(x, '$15,000')
+    age = int(age)
+    if age >= 18:
+        print('You can vote')
+    elif age < 0:
+        print('You are a time traveller')
     else:
-        print(x, '$20,000')
+        print('Too young to vote')
 except:
-    print('Enter integer')
+    print('Enter numeric input')
