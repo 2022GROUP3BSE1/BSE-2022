@@ -5,19 +5,22 @@ def computegrade(score):
         if score > 1.0 or score < 0.0:
             raise ValueError
         elif score < 0.6:
-            print('F')
+            grade = 'F'
         elif score < 0.7:
-            print('D')
+            grade = 'D'
         elif score < 0.8:
-            print('C')
+            grade = 'C'
         elif score < 0.9:
-            print('B')
+            grade = 'B'
         else:
-            print('A')
+            grade = 'A'
+
+        print(grade)
     except:
         print('bad score')
 
-    return score
+    return grade
 
 
 computegrade(0.9)
+
