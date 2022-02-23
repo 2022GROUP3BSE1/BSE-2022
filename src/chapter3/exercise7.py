@@ -1,4 +1,4 @@
-location = input("Location= ")
+location = input("Location= ").lower()
 pay = input("Pay= ")
 
 # John's decisions
@@ -16,7 +16,7 @@ except:
     exit()
 
 # KAMPALA RESPONSE
-if location == "Kampala" or location == "kampala":
+if location == "kampala":
     if pay >= 10000000:
         print(b)
     else:
@@ -25,13 +25,13 @@ if location == "Kampala" or location == "kampala":
 else:
     pass
 # MBARARA RESPONSE
-if location == "Mbarara" or location == "mbarara":
+if location == "mbarara":
     if pay > 4000000:
         print(a)
     else:
         print(c)
 # SPACE RESPONSE
-elif location == "Space" or location == "space":
+elif location == "space":
     print(a)
 # ANY OTHER'S RESPONSE
 else:

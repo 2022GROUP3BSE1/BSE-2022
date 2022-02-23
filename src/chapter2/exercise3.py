@@ -1,5 +1,5 @@
 Hours = input('Enter hours: ')
-Hours = float(Hours)
+Hours = int(Hours)
 
 Rate = input('Enter rate: ')
 Rate = float(Rate)
