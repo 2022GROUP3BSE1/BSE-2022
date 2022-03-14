@@ -3,7 +3,7 @@
 # DEFINING A FUNCTION THAT WILL OPEN THE USER'S FILE
 def open_file():
     while True:
-        input_file = input("Enter the file name: ")     # PROMPTING USER FOR FILE NAME
+        input_file = input("\nEnter the file name: ")     # PROMPTING USER FOR FILE NAME
         try:
             file_object = open(input_file, "r")     # OPENING FILE AS READABLE
             break
@@ -41,27 +41,44 @@ def process_file(file_object):
             break
         else:
             print("Invalid input!")
-
+    # INITIATING MAX AND MIN PERCENTAGES AND THEIR CORRESPONDING COUNTRIES
+    max_percent = None
+    min_percent = None
+    max_country = ''
+    min_country = ''
+    
     for line in file_object:        # READING INDIVIDUAL LINES IN THE FILE
         
         # READING THE FIELDS OF YEAR AND INCOME LEVEL
         year_field = line[88:]
         income_field = line[50:58]
         percentage_field = line[59:62]
+        country_field = line[:49]
 
         # STRIPING TO REMOVE WHITE SPACES
         year_field = year_field.strip()
         income_field = income_field.strip()
         percentage_field = percentage_field.strip()
+        country_field = country_field.strip()
         
         # PRINTING LINES WITH CORRESPONDING YEARS AND INCOME LEVELS
         if year_field.startswith(year) and income_field == income_level:
             count = count + 1
             total_percent = total_percent + int(percentage_field)
-            
+
+            if max_percent is None or percentage_field > max_percent:
+                max_percent = percentage_field  # UPDATING MAXIMUM PERCENTAGE
+                max_country = country_field     # UPDATING COUNTRY WITH MAXIMUM PERCENT
+            elif min_percent is None or percentage_field < min_percent:
+                min_percent = percentage_field
+                min_country = country_field
+            else:
+                pass
+
     print(f"\n>>>Count for records: {count}")
     print(f">>>Average percent: {round((total_percent/count),1)}")
-
+    print(">>>Country with highest percentage:", max_country, max_percent)
+    print(">>>Country with lowest percentage:", min_country, min_percent)
 
 # DEFINING MAIN FUNCTION TO CALL THE open_file FUNCTION AND process_file FUNCTION
 def main():
