@@ -67,6 +67,7 @@ def process_file(file_object):
 def main():
     file_name = open_file()
     process_file(file_name)
+    file_name.close()
 
 # CALLING MAIN FUNCTION
 main()
