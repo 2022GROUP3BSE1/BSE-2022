@@ -22,7 +22,7 @@ while True:
     year = input("Enter year: ")        # PROMPTING USER FOR YEAR TO COPY DATA FROM
 
     for line in measles_file:       # READING LINES FROM MEASLES FILE
-        if year.lower() == "" or year == "all":
+        if year == "" or year.lower() == "all":
             file_handle.write(line)
         else:
             year_field = line[84:]       # STARTING INDEX FOR YEAR FIELD IS 84

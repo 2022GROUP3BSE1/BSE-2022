@@ -62,7 +62,7 @@ def process_file(file_object):
         country_field = country_field.strip()
         
         # PRINTING LINES WITH CORRESPONDING YEARS AND INCOME LEVELS
-        if year_field.startswith(year) and income_field == income_level:
+        if (year == "" or year.lower() == "all") and income_field == income_level:
             count = count + 1
             total_percent = total_percent + int(percentage_field)
 
@@ -74,11 +74,26 @@ def process_file(file_object):
                 min_country = country_field
             else:
                 pass
+        
+        elif year_field.startswith(year) and income_field == income_level:
+            count = count + 1
+            total_percent = total_percent + int(percentage_field)
 
-    print(f"\n>>>Count for records: {count}")
-    print(f">>>Average percent: {round((total_percent/count),1)}")
-    print(">>>Country with highest percentage:", max_country, max_percent)
-    print(">>>Country with lowest percentage:", min_country, min_percent)
+            if max_percent is None or percentage_field > max_percent:
+                max_percent = percentage_field  # UPDATING MAXIMUM PERCENTAGE
+                max_country = country_field     # UPDATING COUNTRY WITH MAXIMUM PERCENT
+            elif min_percent is None or percentage_field < min_percent:
+                min_percent = percentage_field
+                min_country = country_field
+            else:
+                pass
+    if count != 0:
+        print(f"\n>>>Count for records: {count}")
+        print(f">>>Average percent: {round((total_percent/count),1)}")
+        print(">>>Country with highest percentage:", max_country, max_percent)
+        print(">>>Country with lowest percentage:", min_country, min_percent)
+    else:
+        print("No records.")
 
 # DEFINING MAIN FUNCTION TO CALL THE open_file FUNCTION AND process_file FUNCTION
 def main():
